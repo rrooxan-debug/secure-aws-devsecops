@@ -47,3 +47,29 @@ resource "aws_s3_bucket_versioning" "secure_demo" {
   }
 }
 
+resource "aws_security_group" "secure_ec2_sg" {
+  name        = "secure-ec2-sg"
+  description = "Security group for secure EC2 instance"
+  vpc_id      = aws_vpc.secure_vpc.id
+
+  ingress {
+    description = "SSH from trusted network"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["196.188.252.131/32"]
+  }
+
+  egress {
+    description = "Allow outbound traffic"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name    = "secure-ec2-sg"
+    Project = "Secure AWS DevSecOps"
+  }
+}

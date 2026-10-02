@@ -18,7 +18,7 @@ resource "aws_security_group" "secure_web_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["196.188.252.131/32"]
   }
 
   # Outbound traffic

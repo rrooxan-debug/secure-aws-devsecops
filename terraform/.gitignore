@@ -1,18 +1,7 @@
-# Terraform
+terraform.tfstate
+terraform.tfstate.backup
 .terraform/
 *.tfstate
 *.tfstate.*
-crash.log
-crash.*.log
-
-# Terraform variables / secrets
 *.tfvars
 *.tfvars.json
-
-# AWS credentials
-.aws/
-credentials
-
-# OS files
-.DS_Store
-Thumbs.db
