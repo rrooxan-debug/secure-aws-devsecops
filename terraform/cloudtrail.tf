@@ -133,9 +133,9 @@ resource "aws_cloudtrail" "secure_trail" {
   include_global_service_events = true
   is_multi_region_trail         = true
   enable_log_file_validation    = true
-
-  cloud_watch_logs_group_arn = "${aws_cloudwatch_log_group.cloudtrail_logs.arn}:*"
-  cloud_watch_logs_role_arn  = aws_iam_role.cloudtrail_cloudwatch_role.arn
+  kms_key_id                    = aws_kms_key.cloudtrail.arn
+  cloud_watch_logs_group_arn    = "${aws_cloudwatch_log_group.cloudtrail_logs.arn}:*"
+  cloud_watch_logs_role_arn     = aws_iam_role.cloudtrail_cloudwatch_role.arn
 
   depends_on = [
     aws_iam_role_policy.cloudtrail_cloudwatch_policy,
