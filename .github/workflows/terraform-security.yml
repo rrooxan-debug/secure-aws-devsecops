@@ -18,6 +18,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+- name: Configure AWS credentials
+  uses: aws-actions/configure-aws-credentials@v4
+  with:
+    role-to-assume: arn:aws:iam::305584157343:role/GitHubActionsTerraformRole
+    aws-region: us-east-1
 
       - name: Run Trivy IaC Scan
         uses: aquasecurity/trivy-action@master
